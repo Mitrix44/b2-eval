@@ -1,30 +1,50 @@
+import '../Styles/card.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { UilAngleDoubleRight } from '@iconscout/react-unicons'
 
 function Card() {
   const [chat, setChat] = useState();
 
-  // Méthode du cycle de vie d'un composant React permettant d'effectuer une action au montage du composant
-  // Le montage c'est l'apparition du composant à l'écran
   useEffect(() => {
-    // On créé une méthode pour récupérer les données provenant du backend (Strapi)
     const loadData = async () => {
-      const response = await axios.get('https://api.thecatapi.com/v1/images/search?has_breeds=1&api_key=live_mtl9hrEB87yKSbY11iXEkgFZtnsMeZtj2VhyQIJkQNOnRwIJkMleFZlmgHLyDF7p')
+      const response = await axios.get(`https://api.thecatapi.com/v1/images/search?has_breeds=1&api_key=live_mtl9hrEB87yKSbY11iXEkgFZtnsMeZtj2VhyQIJkQNOnRwIJkMleFZlmgHLyDF7p`)
       if (response.status === 200) {
-        const data = response.data[0].breeds[0]
+        const data = response.data[0]
         setChat(data)
         console.log(chat)
-        // const data = response.data.data
-        // setRestaurants(data)
       }
     }
     loadData();
 }, [])
-  // return (
-  //   // <h1>{response.Promise.PromiseResult.data[0].breeds[0].name}</h1>
-  //   // <img alt="" src= />
-  //   // <button onClick={handleRedirect}>Changer de chat</button>
-  //   )
+
+const handleRedirect =  () => window.location.reload(false)
+
+  return chat && (
+    <section className='chat'>
+      <div className='buttonTitle'>
+        <h1>{chat.breeds[0].name}</h1>
+        <UilAngleDoubleRight className='arrow' onClick={handleRedirect}/>
+      </div>
+      <div className='troisParties'>
+        <div className='partie1'>
+          <h2>Temperament:</h2>
+          <p>{chat.breeds[0].temperament}</p>
+        </div>
+        <div className='partie2'>
+        <img alt={chat.breeds[0].name} src={chat.url} />
+        </div>
+        <div className='partie3'>
+          <h2>Origin:</h2>
+          <p>{chat.breeds[0].origin}</p>
+        </div>
+      </div>
+      <div className='description'>
+        <h2>Description:</h2> <br/>
+        <p>{chat.breeds[0].description}</p>
+      </div>
+    </section>
+    )
 }
 
 export default Card;

@@ -1,0 +1,71 @@
+.chat{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+}
+.chat .buttonTitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  color: blue;
+}
+.chat .buttonTitle h1 {
+  font-size:xx-large;
+}
+.chat .buttonTitle .arrow {
+  width: 50px;
+  height: 50px;
+}
+.chat .troisParties {
+  padding: 20px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: grey;
+}
+.chat .troisParties .partie1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  height: 400px;
+}
+.chat .troisParties .partie1 h2 {
+  font-size: x-large;
+}
+.chat .troisParties .partie1 h3{
+  font-size:larger;
+}
+.chat .troisParties .partie2 {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 400px;
+}
+.chat .troisParties .partie2 img {
+  height:400px;
+}
+.chat .troisParties .partie3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  height: 400px;
+}
+.chat .troisParties .partie3 h2 {
+  font-size: x-large;
+}
+.chat .troisParties .partie3 h3 {
+  font-size: larger;
+}
+.chat .description {
+  width: 35%;
+  font-size: larger;
+  color:blue;
+  margin: 50px auto;
+}
+.chat .description h2{
+  margin:-15px 0;
+}
